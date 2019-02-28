@@ -7,17 +7,17 @@ private char x;
 private int y;
 public RepeatLetter() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 public RepeatLetter(char x) {
 	super();
 	this.x = x;
 }
+
 @Override
 public int compareTo(RepeatLetter o) {
-	if(this.x>o.x) {
+	if(this.y>o.y) {
 		return -1;
-	}else if(this.x<o.x) {
+	}else if(this.y<o.y) {
 		return 1;
 	}else return 0;
 }
