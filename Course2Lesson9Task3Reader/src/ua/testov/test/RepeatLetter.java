@@ -1,10 +1,12 @@
 package ua.testov.test;
 
 import java.util.Comparator;
+import java.util.concurrent.Callable;
 
-public class RepeatLetter implements Comparable<RepeatLetter> {
+public class RepeatLetter implements Comparable<RepeatLetter>, Callable<Integer> {
 	private char x;
 	private int y = 0;
+	private static String str;
 
 	public RepeatLetter() {
 		super();
@@ -14,9 +16,18 @@ public class RepeatLetter implements Comparable<RepeatLetter> {
 		super();
 		this.x = x;
 	}
+	
 
-	public int countSymbols(String text) {
-		char[] array = text.toCharArray();
+	public static String getStr() {
+		return str;
+	}
+
+	public static void setStr(String str) {
+		RepeatLetter.str = str;
+	}
+
+	public int countSymbols() {
+		char[] array = str.toLowerCase().toCharArray();
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] == x) {
 				y = y + 1;
@@ -33,6 +44,16 @@ public class RepeatLetter implements Comparable<RepeatLetter> {
 			return 1;
 		} else
 			return 0;
+	}
+
+	@Override
+	public Integer call() throws Exception {
+		return countSymbols();
+	}
+
+	@Override
+	public String toString() {
+		return "RepeatLetter [x=" + x + ", y=" + y + "]";
 	}
 
 }
