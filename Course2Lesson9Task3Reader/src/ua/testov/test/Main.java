@@ -2,7 +2,6 @@ package ua.testov.test;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,13 +48,17 @@ public class Main {
 		}
 		
 		ExecutorService exec=Executors.newFixedThreadPool(3);
-		List<Future<Integer>> res=new ArrayList<>();
+		List<Integer> res=new ArrayList<>();
 		
 		try {
 			for (int i = 0; i < list.size(); i++) {
 //				System.out.println(list.get(i));
 				Future<Integer> future=exec.submit(list.get(i));
-				res.add(future);
+				try {
+					res.add(future.get());
+				} catch (InterruptedException | ExecutionException e) {
+					e.printStackTrace();
+				}
 			}
 		
 //		for (Future<Integer> future : res) {
