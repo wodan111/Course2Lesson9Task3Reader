@@ -1,6 +1,5 @@
 package ua.testov.test;
 
-import java.util.Comparator;
 import java.util.concurrent.Callable;
 
 public class RepeatLetter implements Comparable<RepeatLetter>, Callable<Integer> {
@@ -48,12 +47,13 @@ public class RepeatLetter implements Comparable<RepeatLetter>, Callable<Integer>
 
 	@Override
 	public Integer call() throws Exception {
-		return countSymbols();
+		int x=countSymbols();
+		return x;
 	}
 
 	@Override
 	public String toString() {
-		return "RepeatLetter [x=" + x + ", y=" + y + "]";
+		return "RepeatLetter [x=" + x + ", y=" + y + "] \n";
 	}
 
 }
